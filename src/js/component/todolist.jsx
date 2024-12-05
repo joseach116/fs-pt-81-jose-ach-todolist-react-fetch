@@ -7,7 +7,7 @@ const TodoList = () => {
     
   
   useEffect(()=>{
-    fetch('https://playground.4geeks.com/apis/fake/todos/user/joseach')
+    fetch('https://playground.4geeks.com/apis/todos/user/joseach')
     .then(response => {
         console.log(response.ok); 
         console.log(response.status); 
@@ -22,7 +22,7 @@ const TodoList = () => {
     .catch(error => {
         console.error("Error fetching date: ", error);
         if (error.message.includes("404")) {
-          fetch('https://playground.4geeks.com/apis/fake/todos/user/joseach', { 
+          fetch('https://playground.4geeks.com/apis/todos/user/joseach', { 
             method: 'POST',
             body: JSON.stringify([]),
             headers: {
@@ -40,7 +40,7 @@ const TodoList = () => {
   
 
   const updateList = (newItems) => {
-    fetch('https://playground.4geeks.com/apis/fake/todos/user/joseach', { 
+    fetch('https://playground.4geeks.com/apis/todos/user/joseach', { 
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
