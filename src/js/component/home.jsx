@@ -62,6 +62,23 @@ const Home = () => {
       });
   };
 
+  const eliminarTodasLasTareas = () => {
+    fetch("https://playground.4geeks.com/todo/todos/usuario", {
+      method: "DELETE", // Método DELETE para eliminar todas las tareas
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Todas las tareas han sido eliminadas.");
+          setTodos([]); // Vaciar el estado de las tareas
+        } else {
+          console.error("No se pudieron eliminar las tareas.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al eliminar tareas:", error);
+      });
+  };
+
   return (
     <div className="text-center">
       <h1 className="text-center mt-5">TODOs</h1>
@@ -73,6 +90,9 @@ const Home = () => {
           placeholder="Agregar nueva tarea"
         />
         <button onClick={agregarTarea}>Agregar tarea</button>
+      </div>
+      <div>
+        <button onClick={eliminarTodasLasTareas}>Eliminar todas las tareas</button>
       </div>
       {todos.length === 0 ? (
         <p>No hay tareas aún.</p>
